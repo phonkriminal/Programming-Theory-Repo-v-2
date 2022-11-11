@@ -341,7 +341,6 @@
 "Assets/Scripts/RectShape.cs"
 "Assets/Scripts/SquareShape.cs"
 "Assets/Scripts/TriangleShape.cs"
-"Assets/Scripts/UIPanelManager.cs"
 "Assets/Shapes2D/Scripts/PolyMap.cs"
 "Assets/Shapes2D/Scripts/Shape.cs"
 "Assets/Shapes2D/Scripts/Shapes2DPrefs.cs"
