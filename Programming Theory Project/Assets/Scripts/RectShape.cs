@@ -4,22 +4,36 @@ namespace edeastudio
 {
     public class RectShape : edsShape
     {
-        private float[] sides;
 
         public RectShape()
         {
             ShapeType = ShapeTypeEnum.Rectangle;
             SetShapeName(ShapeTypeName(this.ShapeType));
-            SetSides(4);
-            sides = GetSides();
-            sides[0] = 1;
-            sides[1] = 2;
-            sides[2] = 1;
-            sides[3] = 2;    
         }
-        public override float GetArea(float[] sides)
+
+        public override void Start()
         {
-            float area = sides[0] * sides[1];
+            base.Start();
+            
+            inputsSideLength[0].text = "2";
+            inputsSideLength[1].text = "1";
+            inputsSideLength[2].text = "2";
+            inputsSideLength[3].text = "1";
+
+            Calculate();
+        }
+
+        public override void Calculate()
+        {
+            base.Calculate();
+            areaText.text = string.Format(GetArea().ToString("0.00"));
+        }
+
+        public override float GetArea()
+        {
+            float a = float.Parse(inputsSideLength[0].text);
+            float b = float.Parse(inputsSideLength[1].text);
+            float area = a * b;
 
             return (float)Math.Round((double)area, 2);
         }

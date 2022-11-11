@@ -5,26 +5,23 @@ namespace edeastudio
 {
     public class CircleShape : edsShape
     {
-        private float[] sides;
+        //private float[] sides;
 
         public CircleShape()
         {
-            float radius = 10;
+
             ShapeType = ShapeTypeEnum.Circle;
             SetShapeName(ShapeTypeName(this.ShapeType));
-            SetSides(1);
-            sides = GetSides();
+            //SetSides(1);
+            //sides = GetSides();
 
-            //  Circumference =  C = 2 * r * π
-            //  where C is the circumference
-            //  and r is radius
-            
-            float c = radius * radius * Mathf.PI;
-            
-            for (int i = 0; i < sides.Length; i++)
-            {
-                sides[i] = c;
-            }
+        }
+
+        public override void Start()
+        {
+            base.Start();
+            inputsSideLength[0].text = "5";
+            Calculate();
         }
         public override void SetSidesLength(float[] sidesLength)
         {
@@ -36,8 +33,24 @@ namespace edeastudio
                 m_sidesLenght[i] = c;
             }
         }
-    
-        public override float GetArea(float[] sides)
+
+        public override float GetPerimeter()
+        {
+            //  Circumference =  C = 2 * r * π
+            //  where C is the circumference
+            //  and r is radius
+            float radius = float.Parse(inputsSideLength[0].text);
+
+            float c = radius * radius * Mathf.PI;
+
+            //for (int i = 0; i < sides.Length; i++)
+            //{
+            //    sides[i] = c;
+            //}
+
+            return (float)Math.Round((double)c, 2);
+        }
+        public override float GetArea()
         {
             //  A = r² x π
             //  where A is Area
@@ -47,12 +60,22 @@ namespace edeastudio
             //  where A is Area
             //  and p is circumference
 
-            if (sides == null || sides.Length == 0) { return 0.0f; }
-            float p = sides[0] * sides[0] * MathF.PI;
+            float radius = float.Parse(inputsSideLength[0].text);
+
+            
+            float p = radius * radius * MathF.PI;
             float area = Mathf.Pow((2 * p), 2) / 4 * MathF.PI;
 
             return (float)Math.Round((double)area, 2);
         }
+
+        public override void Calculate()
+        {
+            base.Calculate();
+            perimeterText.text = string.Format(GetPerimeter().ToString("0,000.00"));
+            areaText.text = string.Format(GetArea().ToString("0.00"));
+        }
+
     }
 
 }

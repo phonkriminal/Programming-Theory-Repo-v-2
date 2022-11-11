@@ -14,6 +14,7 @@ namespace edeastudio
         private TMP_InputField inputShapeName;
         [SerializeField]
         private TMP_InputField[] inputsSideLength;
+        [SerializeField]
         private edsShape sS;
         [SerializeField]
         private GameObject shapeObject;
@@ -38,24 +39,25 @@ namespace edeastudio
 
         public void ShowCurrentInfo()
         {
-            if(inputShapeName.text.Length > 0)
-            {
-                dynamicShape.SetShapeName(inputShapeName.text);
-            }
-            textName.text = dynamicShape.GetShapeName();
-            int index = dynamicShape.GetIndex();
-            float[] length = new float[index];
+            dynamicShape.Calculate();
+            //if(inputShapeName.text.Length > 0)
+            //{
+            //    dynamicShape.SetShapeName(inputShapeName.text);
+            //}
+            //textName.text = dynamicShape.GetShapeName();
+            //int index = dynamicShape.GetIndex();
+            //float[] length = new float[index];
             
-            for (int i = 0; i < index; i++)
-            {
-                length[i] = (float)Convert.ChangeType(inputsSideLength[i].text, TypeCode.Single);
-            }
-            dynamicShape.SetSidesLength(length);
-            perimeter = dynamicShape.GetPerimeter();
-            area = dynamicShape.GetArea(length);
+            //for (int i = 0; i < index; i++)
+            //{
+            //    length[i] = (float)Convert.ChangeType(inputsSideLength[i].text, TypeCode.Single);
+            //}
+            //dynamicShape.SetSidesLength(length);
+            //perimeter = dynamicShape.GetPerimeter();
+            //area = dynamicShape.GetArea(length);
 
-            string info = $"Current info of {dynamicShape.GetShapeName()} \r\n \r\nPerimeter : {perimeter} \r\nArea : {area}";
-            textInfo.text = info;
+            //string info = $"Current info of {dynamicShape.GetShapeName()} \r\n \r\nPerimeter : {perimeter} \r\nArea : {area}";
+            //textInfo.text = info;
         }
     }
 }
