@@ -72,7 +72,7 @@ namespace edeastudio
         public override void Calculate()
         {
             base.Calculate();
-            perimeterText.text = string.Format(GetPerimeter().ToString("0,000.00"));
+            perimeterText.text = string.Format(GetPerimeter().ToString("0.00"));
             areaText.text = string.Format(GetArea().ToString("0.00"));
         }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace edeastudio
@@ -31,7 +29,7 @@ namespace edeastudio
 
         public void PlaySound()
         {
-            if (audioClips.Length == 0) return;
+            if (audioSource == null || audioClips.Length == 0) return;
 
             if (isRandom) { clipIndex = Random.Range(0, audioClips.Length); }
 
